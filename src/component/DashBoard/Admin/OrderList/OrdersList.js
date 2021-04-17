@@ -62,7 +62,7 @@ const OrdersList = () => {
                                     <select onChange={handleChange} >
                                         <option value={JSON.stringify({ id: order._id, status: "pending" })}>{order.status}</option>
                                         <option value={JSON.stringify({ id: order._id, status: "onGoing" })}>onGoing</option>
-                                        <option value={JSON.stringify({ id: order._id, status: "done" })}>Done</option>
+                                        <option value={JSON.stringify({ id: order._id, status: "Done" })}>Done</option>
                                     </select>
                                 </td>
                             </tr>

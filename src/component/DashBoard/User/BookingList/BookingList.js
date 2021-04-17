@@ -34,8 +34,8 @@ const BookingList = () => {
                                 <td>{order.packageName}</td>
                                 <td>$ {order.price}</td>
                                 <td>{(new Date(order.orderDate).toDateString('dd/MM/yyyy'))}</td>
-                                <td style={{
-                                    color: order.status === 'pending' ? 'green' : 'none'
+                                <td className='p-2 font-weight-bold' style={{
+                                    color: order.status === 'pending' ? 'red' : '#3A00E0'
                                 }}>{order.status}</td>
                             </tr>
                         )
