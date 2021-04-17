@@ -1,0 +1,23 @@
+.blogs .card {
+    border: 0;
+}
+
+.blogs .card-header {
+    border: 0;
+    background-color: transparent;
+}
+
+.blogs .card:hover {
+    color: #fff !important;
+    transition: .1s all ease-in-out !important;
+    background-color: #E91A2F;
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 60%;
+    border-radius: 15px;
+}
+
+.blogs .card:hover h6,
+.blogs .card:hover p {
+    color: #fff !important;
+}
