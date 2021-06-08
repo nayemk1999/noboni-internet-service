@@ -13,6 +13,8 @@ import Dashboard from './component/DashBoard/Admin/DashBoard/Dashboard';
 import Login from './component/Login/Login/Login';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 import UserPanel from './component/DashBoard/User/UserPanel/UserPanel'
+import LoginForm from './component/Form/LoginForm'
+import RegisterForm from './component/Form/RegisterForm';
 
 export const UserContext = createContext()
 const App = () => {
@@ -36,8 +38,11 @@ const App = () => {
           <PrivateRoute path='/user/book/:id'>
             <UserPanel></UserPanel>
           </PrivateRoute>
-          <Route path=''>
-            <Login />
+          <Route path='/login'>
+            <LoginForm />
+          </Route>
+          <Route path='/register-form'>
+            <RegisterForm />
           </Route>
           {/* <Route path='/admin/addServicePlan'>
           <AddServicePlan/>
