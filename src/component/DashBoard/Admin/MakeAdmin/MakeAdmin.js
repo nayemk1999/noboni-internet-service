@@ -8,7 +8,6 @@ const MakeAdmin = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const history = useHistory()
 
-
     const onSubmit = data => {
         const newAdmin = {
             email: data.email,
