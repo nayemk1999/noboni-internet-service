@@ -10,7 +10,6 @@ import {
 import Home from './component/Home/Home/Home';
 import About from './component/Home/About/About';
 import Dashboard from './component/DashBoard/Admin/DashBoard/Dashboard';
-import Login from './component/Login/Login/Login';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 import UserPanel from './component/DashBoard/User/UserPanel/UserPanel'
 import LoginForm from './component/FormCreate/LoginForm'

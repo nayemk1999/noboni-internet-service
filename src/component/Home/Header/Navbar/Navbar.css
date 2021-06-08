@@ -1,20 +1,42 @@
-.log-link {
-    text-decoration: none !important;
-    font-weight: bold !important;
-    font-size: 20px;
-    background-color: black;
-    padding: 5px 25px;
-    border-radius: 5px;
-    color: white;
-}
-
-.nav-bar {
-    color: white !important;
-    font-weight: bold !important;
-}
-
-.log-link:hover {
-    border: 1px solid black;
-    background-color: white;
-    color: black;
-}
+    .avatar {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        position: relative;
+    }
+    
+    .avatar img {
+        width: 25% !important;
+    }
+    
+    .nav-bar {
+        color: white !important;
+        font-weight: bold !important;
+    }
+    
+    .log-link:hover {
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+    }
+    
+    .header-menu {
+        font-weight: bold !important;
+        font-size: 20px;
+        text-decoration: none !important;
+        color: black
+    }
+    
+    .navbar-menu img {
+        width: 200px;
+        padding: 0;
+        left: -20px;
+    }
+    
+    .header-menu:hover {
+        text-decoration: none !important;
+        color: white;
+        background-color: #000000;
+        padding: 10px !important;
+        border-radius: 15px;
+    }

@@ -1,44 +1,45 @@
+import { Avatar } from '@material-ui/core';
 import React, { useContext } from 'react';
+import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../../App';
 import Logo from '../../../../image/logo.png'
 import './Navbar.css'
 
-const Navbar = () => {
+const NavbarMenu = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     return (
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <img style={{ width: '200px' }} class="navbar-brand" src={Logo} alt="" />
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <section>
+            <Navbar className='container navbar-menu' expand="lg sm">
+                <Navbar.Brand className=' text-center' >
+                    <Link to='/'><img className="img-fluid" src={Logo} alt="" /></Link>
+                </Navbar.Brand>
+                <Navbar.Toggle className='ml-auto' style={{ border: '1px solid black' }} aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse className='text-center ' id="basic-navbar-nav">
+                    <Nav className="ml-auto ">
+                        <Nav.Link>
+                            <Link className='header-menu p-1' to="/home">Home</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className='header-menu p-1' to="/about">About Us</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className='header-menu p-1' to="/dashboard">Dashboard</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className='header-menu p-1' to="/contact">Contact</Link>
+                        </Nav.Link>
+                        {
+                            loggedInUser.email ? <Link to='/dashboard'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
+                                : <Link to='/login'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
+                        }
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto mb-lg-0 p-1 ">
-                    <li class="nav-item active">
-                        <Link class="nav-link mr-4 nav-bar" to="/">Home </Link>
-                    </li>
-                    <li class="nav-item active">
-                        <Link class="nav-link mr-4 nav-bar" to="/about">About</Link>
-                    </li>
-                    <li class="nav-item active">
-                        <Link class="nav-link mr-4 nav-bar" to="/dashboard">Dashboard</Link>
-                    </li>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </section>
 
-                    <li class="nav-item active">
-                        <Link class="nav-link mr-4 nav-bar" to="/contact">Contact</Link>
-                    </li>
-                    <li class="nav-item active">
-                        <Link class="nav-link mr-4 nav-bar" to="/dashboard/admin">Admin</Link>
-                    </li>
-                    {
-                        loggedInUser.email ? <Link className="log-link" to='/dashboard'>{loggedInUser.displayName}</Link>
-                            : <Link className="log-link" to='/login'>Login</Link>
-                    }
-                </ul>
-            </div>
-        </nav>
     );
 };
 
-export default Navbar;
+export default NavbarMenu;
