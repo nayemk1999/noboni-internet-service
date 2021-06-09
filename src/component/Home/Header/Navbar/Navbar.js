@@ -10,7 +10,7 @@ const NavbarMenu = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     return (
         <section>
-            <Navbar className='container navbar-menu' expand="lg sm">
+            <Navbar className='navbar-menu' expand="lg sm">
                 <Navbar.Brand className=' text-center' >
                     <Link to='/'><img className="img-fluid" src={Logo} alt="" /></Link>
                 </Navbar.Brand>
@@ -27,12 +27,15 @@ const NavbarMenu = () => {
                             <Link className='header-menu p-1' to="/dashboard">Dashboard</Link>
                         </Nav.Link>
                         <Nav.Link>
-                            <Link className='header-menu p-1' to="/contact">Contact</Link>
+                            <Link className='header-menu p-1' to="/contact-us">Contact US</Link>
                         </Nav.Link>
-                        {
-                            loggedInUser.email ? <Link to='/dashboard'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
-                                : <Link to='/login'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
-                        }
+                        <Nav.Link>
+                            {
+                                loggedInUser.email ? <Link to='/dashboard'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
+                                    : <Link to='/login'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
+                            }                       
+                        </Nav.Link>
+
 
                     </Nav>
                 </Navbar.Collapse>

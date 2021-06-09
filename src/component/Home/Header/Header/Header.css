@@ -7,9 +7,17 @@
     background-position: center center;
     background-repeat: no-repeat;
 }
-
+.nav-container{
+    /* height: 500px; */
+    width: 100%;
+    position: relative;
+    background-image: url("../../../../image/navbarBg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .header-container::after {
-    height: 400px;
+    height: 300px;
     content: ' ';
     position: absolute;
     top: 0;

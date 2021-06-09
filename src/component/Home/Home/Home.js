@@ -1,4 +1,5 @@
 import React from 'react';
+import OurPackages from '../../OurPackages/OurPackages';
 import About from '../About/About';
 import Blogs from '../Blog/Blogs';
 import Footer from '../Footer/Footer';
@@ -13,7 +14,8 @@ const Home = () => {
         <div>
             <Header></Header>  
             <Blogs></Blogs>
-            <OurBestPlan></OurBestPlan>
+            {/* <OurBestPlan></OurBestPlan> */}
+            <OurPackages></OurPackages>
             <ServiceProvide></ServiceProvide>
             <ServiceArea></ServiceArea>
             <About></About>

@@ -5,9 +5,12 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <div className=' header-container'>
-            <NavbarMenu/>
-            <HeaderMain></HeaderMain>
+        <div className='header-container'>
+            <div className='container '>
+                <NavbarMenu />
+                <HeaderMain></HeaderMain>
+            </div>
+            {/* <HeaderCarousel/> */}
         </div>
     );
 };

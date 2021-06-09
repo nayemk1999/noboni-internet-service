@@ -14,6 +14,7 @@ import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 import UserPanel from './component/DashBoard/User/UserPanel/UserPanel'
 import LoginForm from './component/FormCreate/LoginForm'
 import RegisterForm from './component/FormCreate/RegisterForm';
+import ContactForm from './component/FormCreate/ContactForm'
 
 export const UserContext = createContext()
 const App = () => {
@@ -42,6 +43,9 @@ const App = () => {
           </Route>
           <Route path='/register-form'>
             <RegisterForm />
+          </Route>
+          <Route path='/contact-us'>
+            <ContactForm />
           </Route>
           {/* <Route path='/admin/addServicePlan'>
           <AddServicePlan/>
