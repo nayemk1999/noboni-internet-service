@@ -17,6 +17,11 @@
     background-color: gray;
 }
 
+.dashBoardNav img {
+    width: 160px;
+    left: -20px;
+}
+
 .dashBoardNav {
     background-image: url('./image/headerBg.jpg');
 }

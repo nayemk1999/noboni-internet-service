@@ -1,45 +1,45 @@
+import { Avatar } from '@material-ui/core';
 import React, { useContext } from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../App';
 import Logo from '../../../image/logo.png'
-import Navbar from '../../Home/Header/Navbar/Navbar';
 
 const DashboardNavbar = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     return (
-        <div className="dashBoardNav">
-            <nav class="navbar navbar-expand-lg navbar-light container">
-                <img style={{ width: '150px' }} class="img-fluid navbar-brand" src={Logo} alt="" />
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <section className="dashBoardNav">
+            <Navbar className='container' expand="lg sm">
+                <Navbar.Brand className=' text-center' >
+                    <Link to='/'><img className="img-fluid" src={Logo} alt="" /></Link>
+                </Navbar.Brand>
+                <Navbar.Toggle className='ml-auto' style={{ border: '1px solid black' }} aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse className='text-center ' id="basic-navbar-nav">
+                    <Nav className="ml-auto align-items-center">
+                        <Nav.Link>
+                            <Link className='header-menu p-1' to="/home">Home</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className='header-menu p-1' to="/about">About Us</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className='header-menu p-1' to="/dashboard">Dashboard</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <Link className='header-menu p-1' to="/contact-us">Contact US</Link>
+                        </Nav.Link>
+                        <Nav.Link>
+                            {
+                                loggedInUser.email ? <Link to='/dashboard'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
+                                    : <Link to='/login'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
+                            }                       
+                        </Nav.Link>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto mb-lg-0 p-1 ">
-                        <li class="nav-item active">
-                            <Link class="nav-link mr-4 nav-bar" to="/">Home </Link>
-                        </li>
-                        <li class="nav-item active">
-                            <Link class="nav-link mr-4 nav-bar" to="/about">About</Link>
-                        </li>
-                        <li class="nav-item active">
-                            <Link class="nav-link mr-4 nav-bar" to="/dashboard">Dashboard</Link>
-                        </li>
 
-                        <li class="nav-item active">
-                            <Link class="nav-link mr-4 nav-bar" to="/contact">Contact</Link>
-                        </li>
-                        <li class="nav-item active">
-                            <Link class="nav-link mr-4 nav-bar" to="/dashboard/admin">Admin</Link>
-                        </li>
-                        {
-                            loggedInUser.email ? <Link className="log-link" to='/dashboard'>{loggedInUser.displayName}</Link>
-                                : <Link className="log-link" to='/login'>Login</Link>
-                        }                    </ul>
-                </div>
-            </nav>
-        </div>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </section>
 
     );
 };

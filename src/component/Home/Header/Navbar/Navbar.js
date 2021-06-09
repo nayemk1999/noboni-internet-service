@@ -10,13 +10,13 @@ const NavbarMenu = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext)
     return (
         <section>
-            <Navbar className='navbar-menu' expand="lg sm">
+            <Navbar className='navbar-container' expand="lg sm">
                 <Navbar.Brand className=' text-center' >
                     <Link to='/'><img className="img-fluid" src={Logo} alt="" /></Link>
                 </Navbar.Brand>
                 <Navbar.Toggle className='ml-auto' style={{ border: '1px solid black' }} aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse className='text-center ' id="basic-navbar-nav">
-                    <Nav className="ml-auto ">
+                    <Nav className="ml-auto align-items-center">
                         <Nav.Link>
                             <Link className='header-menu p-1' to="/home">Home</Link>
                         </Nav.Link>
@@ -35,8 +35,6 @@ const NavbarMenu = () => {
                                     : <Link to='/login'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
                             }                       
                         </Nav.Link>
-
-
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

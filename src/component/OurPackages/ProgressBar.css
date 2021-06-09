@@ -1,14 +1,18 @@
-
-
 .progress {
     width: 120px;
     height: 120px !important;
     float: left;
     line-height: 120px;
     background: none;
-    margin: 20px;
+    margin-top: 20px;
     box-shadow: none;
     position: relative
+}
+
+@media screen and (max-width: 900px) {
+    .progress {
+        margin: 10px 26%;
+    }
 }
 
 .progress:after {
@@ -108,7 +112,6 @@
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg)
     }
-
     100% {
         -webkit-transform: rotate(180deg);
         transform: rotate(180deg)
@@ -120,7 +123,6 @@
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg)
     }
-
     100% {
         -webkit-transform: rotate(144deg);
         transform: rotate(144deg)
@@ -132,7 +134,6 @@
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg)
     }
-
     100% {
         -webkit-transform: rotate(135deg);
         transform: rotate(135deg)

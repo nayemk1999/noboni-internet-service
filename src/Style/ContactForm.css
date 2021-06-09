@@ -1,5 +1,13 @@
 .form {
+    width: 100%;
     border-radius: 15px;
     padding: 50px;
     box-shadow: 5px 5px 20px;
+}
+
+.form-h1 {
+    color: red;
+    text-shadow: 5px 5px 20px gray;
+    text-align: center;
+    text-decoration: underline;
 }

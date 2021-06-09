@@ -1,0 +1,19 @@
+.package-container {
+    box-sizing: border-box;
+    box-shadow: 5px 5px 15px gray;
+    margin-top: 15px;
+    border-radius: 15px !important;
+}
+
+.icon-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 25px;
+    margin-top: 4px;
+    margin-left: 10px;
+    position: absolute;
+}
+
+.content-container {
+    position: relative;
+}

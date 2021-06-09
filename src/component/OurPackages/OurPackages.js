@@ -17,7 +17,7 @@ const OurPackages = () => {
     return (
         <div className='container mt-5 mb-5'>
             <h4 className='text-brand text-center'>Discover Our Best Plans</h4>
-            <h3 className='text-center' style={{ color: '#343940' }}>Our Internet Service Package</h3>
+            <h3 className='text-center' style={{ color: '#343940', textDecoration: 'underline' }}>Our Internet Service Package</h3>
             <div className="row mt-4">
                 {loading ?
                     packages.map(packageCard => <PackageCard key={packageCard._id} packageCard={packageCard}></PackageCard>)
