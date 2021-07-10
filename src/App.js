@@ -9,17 +9,21 @@ import {
 } from "react-router-dom";
 import Home from './component/Home/Home/Home';
 import About from './component/Home/About/About';
-import Dashboard from './component/DashBoard/Admin/DashBoard/Dashboard';
+// import Dashboard from './component/DashBoard/Admin/DashBoard/Dashboard';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
-import UserPanel from './component/DashBoard/User/UserPanel/UserPanel'
+// import UserPanel from './component/DashBoard/User/UserPanel/UserPanel'
 import LoginForm from './component/FormCreate/LoginForm'
 import RegisterForm from './component/FormCreate/RegisterForm';
+import Dashboard from './component/Pages/Dashboard';
+import { getDecodedUser } from './component/FormCreate/LoginManager';
 
 export const UserContext = createContext()
 const App = () => {
-  const [loggedInUser, setLoggedInUser] = useState({});
+  const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
+  const [isAdmin, setIsAdmin] = useState(false);
+
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+    <UserContext.Provider value={{loggedInUser, isAdmin, setLoggedInUser}}>
       <Router>
         <Switch>
           <Route exact path='/'>
@@ -31,12 +35,12 @@ const App = () => {
           <Route path='/about'>
             <About />
           </Route>
-          <PrivateRoute path='/dashboard'>
+          <PrivateRoute path='/dashboard/:panel'>
             <Dashboard />
           </PrivateRoute>
-          <PrivateRoute path='/user/book/:id'>
+          {/* <PrivateRoute path='/user/book/:id'>
             <UserPanel></UserPanel>
-          </PrivateRoute>
+          </PrivateRoute> */}
           <Route path='/login'>
             <LoginForm />
           </Route>

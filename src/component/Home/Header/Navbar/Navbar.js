@@ -1,45 +1,45 @@
-import { Avatar } from '@material-ui/core';
-import React, { useContext } from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import React, { useContext, useEffect, useState } from 'react';
+import { Button, Container, Image, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../../../App';
-import Logo from '../../../../image/logo.png'
-import './Navbar.css'
+import logo from '../../../../image/logo.png';
+// import ProfilePopper from '../ProfilePopper/ProfilePopper';
 
-const NavbarMenu = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
+const NavBar = () => {
+  const { loggedInUser: { isSignedIn } } = useContext(UserContext);
+  const [isSticky, setSticky] = useState(false);
+  const [isCollapsed , setCollapsed] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if(window.scrollY > 50){
+        setSticky(true)
+      }else{
+        setSticky(false)
+      }
+    })
+  }, []);
+
     return (
-        <section>
-            <Navbar className='container navbar-menu' expand="lg sm">
-                <Navbar.Brand className=' text-center' >
-                    <Link to='/'><img className="img-fluid" src={Logo} alt="" /></Link>
-                </Navbar.Brand>
-                <Navbar.Toggle className='ml-auto' style={{ border: '1px solid black' }} aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse className='text-center ' id="basic-navbar-nav">
-                    <Nav className="ml-auto ">
-                        <Nav.Link>
-                            <Link className='header-menu p-1' to="/home">Home</Link>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Link className='header-menu p-1' to="/about">About Us</Link>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Link className='header-menu p-1' to="/dashboard">Dashboard</Link>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <Link className='header-menu p-1' to="/contact">Contact</Link>
-                        </Nav.Link>
-                        {
-                            loggedInUser.email ? <Link to='/dashboard'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
-                                : <Link to='/login'><Avatar src={loggedInUser?.photoURL}></Avatar></Link>
-                        }
-
+          <Navbar expand="lg" className={ (isSticky || isCollapsed) ? "slide in py-2 show shadow-sm navbar navbar-expand-sm bg-white navbar-light   fixed-top" : "slide out show navbar navbar-expand-sm navbar-light py-2 fixed-top "}>
+            <Container >
+                <Navbar.Brand as={Link} to='/' > <Image style={{height:'33px', width:'43px'}} src={logo} /> <strong>Moto Repair</strong></Navbar.Brand>
+                <Navbar.Toggle onClick={  () => setCollapsed(!isCollapsed ? 'show' : null )} aria-controls="basic-navbar-nav"  style={{background:'#10bad4'}} />
+                  <Navbar.Collapse id="navbar-nav" >
+                    <Nav className="ml-auto text-center">
+                      <Nav.Link as={Link} to='/home' className="mr-3"><strong>Home</strong></Nav.Link>
+                      <Nav.Link href="#about" className="mr-3"><strong>About</strong></Nav.Link>
+                      <Nav.Link href="#service" className="mr-3"><strong>Service</strong></Nav.Link>
+                      <Nav.Link href="#contact" className="mr-3"><strong>Contact</strong></Nav.Link>
+                      <Nav.Link as={Link} to='/dashboard/profile' className="mr-3"><strong>Dashboard</strong></Nav.Link>
+                        {/* {
+                            isSignedIn ?  <ProfilePopper /> : <Button as={Link} to='/login' variant="info" className='main-button'>Login</Button>
+                        } */}
                     </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-        </section>
-
+                  </Navbar.Collapse>
+             </Container>
+          </Navbar>
     );
 };
 
-export default NavbarMenu;
+export default NavBar;

@@ -1,19 +1,66 @@
 .header-container {
-    height: 500px;
-    width: 100%;
-    position: relative;
-    background-image: url("../../../../image/headerBg.jpg");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-
-.header-container::after {
-    height: 400px;
-    content: ' ';
+    height: 100vh;
+  }
+  
+  .header-container::after {
+    height: 100vh;
+    content: " ";
     position: absolute;
     top: 0;
-    width: 100%;
     right: 0;
-    z-index: -80;
-}
+    width: 68%;
+    background-image: url("../../../../image/top-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -50;
+  }
+  
+  .navbar {
+    transition: all 0.3s;
+  }
+  
+  .banner {
+    height: 100vh;
+  }
+  
+  .banner h1 {
+    color: #404655;
+  }
+  
+  .banner .btn {
+    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+  }
+  
+  .navbar .btn {
+    border-radius: 50px;
+  }
+  
+  /* ------------
+          Responsive Part 
+      --------------*/
+  
+  @media (max-width: 768px) {
+    .banner .btn {
+      font-size: 0.9rem;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+    }
+  
+    .header-container {
+      height: 500px;
+    }
+  
+    .header-container::after {
+      height: 500px;
+      width: 360px;
+      background-size: contain;
+    }
+  
+    .banner {
+      height: 500px;
+      margin-top: 80px;
+    }
+  }
+  

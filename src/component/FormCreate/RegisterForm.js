@@ -6,7 +6,6 @@ import bg from '../../image/bg.svg';
 import avatar from '../../image/avatar.svg';
 import firebase from "firebase/app";
 import "firebase/auth";
-import ModalPopup from '../Modal/Modal';
 import { firebaseConfig } from '../../firebase.config';
 
 if (!firebase.apps.length) {
@@ -89,7 +88,6 @@ const RegisterForm = () => {
                             <Link className="a" to="/login">Login</Link>
                         </div>
                         <input onClick={signupForm} type="submit" class="login-btn" value="Sign Up" />
-                        {/* <ModalPopup/> */}
                     </div>
                 </div>
             </div>
