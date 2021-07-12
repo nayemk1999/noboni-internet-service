@@ -9,7 +9,7 @@ const OrderList = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://moto-repair.herokuapp.com/all-orders`)
+        axios.get(`https://noboni-internet-service.herokuapp.com/ordersList`)
             .then(res => {
                 setOrders(res.data);
             })

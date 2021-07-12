@@ -4,7 +4,7 @@ import { Button, Col, Container, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../../App';
 
 const Review = () => {
     const { loggedInUser: {  name, photo  } } = useContext(UserContext);
@@ -14,7 +14,7 @@ const Review = () => {
         const loading = toast.loading('Uploading...Please wait!');
          data.img = photo || "https://i.ibb.co/5GzXkwq/user.png"
    
-        axios.post('https://moto-repair.herokuapp.com/add-review', data)
+        axios.post('https://noboni-internet-service.herokuapp.com/addReview', data)
         .then(res => {
             toast.dismiss(loading);
             if (res.data) {

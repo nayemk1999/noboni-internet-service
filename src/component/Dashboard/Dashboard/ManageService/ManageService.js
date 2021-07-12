@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../../App';
 import TableSpinner from '../TableSpinner/TableSpinner';
 
 const ManageService = () => {

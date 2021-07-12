@@ -4,7 +4,7 @@ import { Button, Col, Container, Form } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../../App';
 
 const AddAdmin = () => {
     const { loggedInUser: { email } } = useContext(UserContext);
@@ -15,7 +15,7 @@ const AddAdmin = () => {
             return swal("Permission restriction!", "As a test-admin, you don't have this permission.", "info");
         }
         const loading = toast.loading('Adding...Please wait!');
-        axios.post('https://moto-repair.herokuapp.com/add-admin', data)
+        axios.post('https://noboni-internet-service.herokuapp.com/addAdmin', data)
             .then(res => {
                 reset()
                 toast.dismiss(loading);

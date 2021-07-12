@@ -23,7 +23,7 @@ const AddServices = () => {
 
         const loading = toast.loading('Adding...Please wait!');
 
-        const url='https://moto-repair.herokuapp.com/add-services'
+        const url='https://noboni-internet-service.herokuapp.com/addPackage'
         fetch(url,{
             method: 'POST',
             headers:{

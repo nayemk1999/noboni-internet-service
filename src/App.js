@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import {
@@ -16,6 +16,8 @@ import LoginForm from './component/FormCreate/LoginForm'
 import RegisterForm from './component/FormCreate/RegisterForm';
 import Dashboard from './component/Pages/Dashboard';
 import { getDecodedUser } from './component/FormCreate/LoginManager';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 export const UserContext = createContext()
 
@@ -23,9 +25,17 @@ const App = () => {
   const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
   const [selectedService, setSelectedService] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
+console.log(isAdmin);
+  useEffect(() => {
+    axios.get(`https://noboni-internet-service.herokuapp.com/admin?email=${loggedInUser.email}`)
+      .then(res => {
+        setIsAdmin(res.data);
+      })
+      .catch(error => toast.error(error.message))
+  }, [loggedInUser.email]);
 
   return (
-    <UserContext.Provider value={{loggedInUser, isAdmin, selectedService, setLoggedInUser, setSelectedService, setIsAdmin}}>
+    <UserContext.Provider value={{loggedInUser, isAdmin, selectedService, setLoggedInUser, setSelectedService}}>
       <Router>
         <Switch>
           <Route exact path='/'>

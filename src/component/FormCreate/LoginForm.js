@@ -15,7 +15,8 @@ import toast from 'react-hot-toast';
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { setLoggedInUser } = useContext(UserContext);
+    const { setLoggedInUser, setIsAdmin } = useContext(UserContext);
+
     const history = useHistory()
     const location = useLocation()
     let { from } = location.state || { from: { pathname: "/" } };
