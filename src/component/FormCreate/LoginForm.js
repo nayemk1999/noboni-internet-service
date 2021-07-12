@@ -8,12 +8,10 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import { UserContext } from '../../App';
 import { firebaseConfig } from '../../firebase.config';
+import { handleGoogleSignIn, handleSignOut, initializeLoginFramework, setJWTToken, signInWithEmailAndPassword } from './LoginManager';
+import swal from 'sweetalert';
+import toast from 'react-hot-toast';
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-} else {
-    firebase.app(); // if already initialized, use that one
-}
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,14 +20,11 @@ const LoginForm = () => {
     const location = useLocation()
     let { from } = location.state || { from: { pathname: "/" } };
 
-    const loginForm = () => {
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                var user = userCredential.user;
-                setLoggedInUser(user)
-                setEmail('');
-                setPassword('');
-                history.replace(from)
+    const login = () => {
+        initializeLoginFramework()
+        signInWithEmailAndPassword(email, password)
+            .then(res => {
+                handleResponse(res)
             })
             .catch((error) => {
                 var errorCode = error.code;
@@ -39,20 +34,48 @@ const LoginForm = () => {
     }
 
     const googleLogin = () => {
-        const gProvider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth()
-            .signInWithPopup(gProvider)
-            .then((result) => {
-                const user = result.user;
-                setLoggedInUser(user);
-                history.replace(from)
-            }).catch((error) => {
+        initializeLoginFramework()
+        handleGoogleSignIn()
+            .then(res => {
+                handleResponse(res)
+            })
+            .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 const email = error.email;
                 alert(errorMessage)
                 console.log(errorCode, email, errorMessage);
             });
+    }
+
+    const handleResponse = (res) => {
+        setLoggedInUser(res);
+        setJWTToken();
+        history.replace(from);
+        toast.success('Successfully Logged In!');
+        if (res.email === "test@admin.com") {
+            swal({
+                title: "Warning!",
+                content: (
+                    <p>
+                        You have entered the admin panel for testing.
+                        <br />
+                        <b>Please do not abuse this facility!</b>
+                    </p>
+                ),
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            }).then(ok => {
+                if (!ok) {
+                    handleSignOut()
+                        .then(res => {
+                            setLoggedInUser(res)
+                            toast.error('Logged Out!');
+                        })
+                }
+            });
+        }
     }
 
     const handleFocus = (e) => {
@@ -101,7 +124,7 @@ const LoginForm = () => {
                             <Link className="a" to="/">Forget Password</Link>
                             <Link className="a" to="/register-form">Sign Up</Link>
                         </div>
-                        <input onClick={loginForm} type="submit" class="login-btn" value="Login" />
+                        <input onClick={login} type="submit" class="login-btn" value="Login" />
                         <button onClick={googleLogin} class="login-btn" value="">Login With Google</button>
                     </div>
                 </div>

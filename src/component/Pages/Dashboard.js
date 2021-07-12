@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-// import { Navbar } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { UserContext } from '../../App';
 import Profile from '../Dashboard/Dashboard/Profile/Profile';

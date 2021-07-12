@@ -18,12 +18,14 @@ import Dashboard from './component/Pages/Dashboard';
 import { getDecodedUser } from './component/FormCreate/LoginManager';
 
 export const UserContext = createContext()
+
 const App = () => {
   const [loggedInUser, setLoggedInUser] = useState(getDecodedUser());
+  const [selectedService, setSelectedService] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
 
   return (
-    <UserContext.Provider value={{loggedInUser, isAdmin, setLoggedInUser}}>
+    <UserContext.Provider value={{loggedInUser, isAdmin, selectedService, setLoggedInUser, setSelectedService, setIsAdmin}}>
       <Router>
         <Switch>
           <Route exact path='/'>

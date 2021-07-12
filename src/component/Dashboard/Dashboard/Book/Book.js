@@ -13,17 +13,18 @@ import './Book.css';
 
 const Book = () => {
     const { selectedService: { name, price } } = useContext(UserContext);
+    
     const [show, setShow] = useState(true);
     const [services, setServices] = useState([]);
 
-    const stripePromise = loadStripe('pk_test_51Ie11ZIo3XVCKagbJJnefC4ruHwRuiiS8mPOiugOUPZ3F9isu6mCQJjhdMQ9SHugvc8Y6pjEGk2xYIMhOW2CpJQN00ArldL7I3');
+    const stripePromise = loadStripe('pk_test_51Ie347FFnMI05DcT9N9MWDIVZy2eGUnxFwkGsEsXi8BnUsREgUhSzbWAE8xCMPm8Kyf0iHU2YVJ829Axn81NWEIV00ZkcFzHKO');
     const options = services.map(service => ({ value: service.name, label: service.name, price: service.price }));
-    const defaultOption = name ? { value: name, label: name, price: price } : options[0] || { value: "Engine Repair", label: "Engine Repair", price: 20000 };
+    const defaultOption = name ? { value: name, label: name, price: price } : options[0] || { value: "Internet", label: "Internet", price: 200 };
     const [selectedOption, setSelectedOption] = useState(defaultOption);
     const orders = services.find(service => service.name === selectedOption.value);
 
     useEffect(() => {
-        axios.get('https://moto-repair.herokuapp.com/all-services')
+        axios.get('https://noboni-internet-service.herokuapp.com/packages')
             .then(res => setServices(res.data))
             .catch(error => toast.error(error.message))
     }, [])
@@ -66,7 +67,7 @@ const Book = () => {
                                     <td>
                                         <Select onChange={option => setSelectedOption(option)}   defaultValue={defaultOption} options={options} styles={colourStyles} />
                                     </td>
-                                    <td> ৳ {price || selectedOption.price}</td>
+                                    <td> $ {price || selectedOption.price}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -2,6 +2,7 @@ import { CardCvcElement, CardExpiryElement, CardNumberElement, useElements, useS
 import React, { useContext, useMemo } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { Link, useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
 import { UserContext } from '../../../../App';
 import './StripePayment.css';
@@ -29,7 +30,7 @@ const useOptions = () => {
 
 
 const StripePayment = ({ orders }) => {
-  
+    const history = useHistory()
     const stripe = useStripe();
     const elements = useElements();
     const options = useOptions();
@@ -55,8 +56,8 @@ const StripePayment = ({ orders }) => {
         }
         delete orders._id;
         const bookingInfo = {
-            payload:paymentMethod,
-            order:orders,
+            payload: paymentMethod,
+            order: orders,
             name: e.target.name.value,
             email: loggedInUser.email,
             city: e.target.address.value,
@@ -65,7 +66,7 @@ const StripePayment = ({ orders }) => {
             time: new Date().toDateString('dd/mm/yyyy')
         };
 
-        fetch('https://moto-repair.herokuapp.com/add-order', {
+        fetch('https://noboni-internet-service.herokuapp.com/addOrder', {
             method: 'POST',
             headers: { 'Content-Type': 'Application/json' },
             body: JSON.stringify(bookingInfo)
@@ -74,14 +75,15 @@ const StripePayment = ({ orders }) => {
             .then(data => {
                 if (data) {
                     toast.dismiss(loading);
-                    return swal("Successfully Ordered",  ` ${loggedInUser.name} thank you for take ${orders.name} ....!!`, "success");
+                    swal("Successfully Ordered", ` ${loggedInUser.name} thank you for take ${orders.name} ....!!`, "success");
+                    history.push('/dashboard/book-list')
                 };
             });
     };
 
     return (
-       <Form onSubmit={handlePayment}>
-          <Row>
+        <Form onSubmit={handlePayment}>
+            <Row>
                 <Col md={6}>
                     <div className="admin-group">
                         <Form.Label htmlFor="name">Your Name</Form.Label>
@@ -96,7 +98,7 @@ const StripePayment = ({ orders }) => {
                     </div>
                 </Col>
 
-                <Col  md={6}>
+                <Col md={6}>
                     <div className=" admin-group mt-3">
                         <Form.Label htmlFor="address">Address (City)</Form.Label>
                         <Form.Control name="address" id="address" type="text" placeholder="Enter Your Address" required />
@@ -116,14 +118,14 @@ const StripePayment = ({ orders }) => {
                 </Col>
 
                 <Col md={6} className='admin-group mt-3'>
-                     <Form.Label>
+                    <Form.Label>
                         <span>CVC</span> <CardCvcElement options={options} />
                     </Form.Label>
                 </Col>
-          </Row>
-          
+            </Row>
+
             <div className="text-center mt-3">
-                <Button  variant='info'  type="submit" className='main-button' disabled={!stripe}> Checkout </Button>
+                <Button variant='info' type="submit" className='main-button' disabled={!stripe}> Checkout </Button>
             </div>
         </Form>
     );
