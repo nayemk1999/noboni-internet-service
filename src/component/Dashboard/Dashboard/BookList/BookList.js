@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../../App';
 import TableSpinner from '../TableSpinner/TableSpinner';
 import './BookList.css';
 
@@ -32,7 +32,7 @@ const BookList = () => {
 
 
     useEffect(() => {
-        axios.get('https://moto-repair.herokuapp.com/orderedByEmail?email='+loggedInUser.email)
+        axios.get('https://noboni-internet-service.herokuapp.com/orders?email='+loggedInUser.email)
             .then(res => {
                 setOrders(res.data);
             })
@@ -54,7 +54,7 @@ const BookList = () => {
             if (wantDelete) {
                 const loading = toast.loading('Deleting...Please wait!');
                 const removedServices = orders.filter(item => item._id !== id);
-                axios.delete(`https://moto-repair.herokuapp.com/cancel-order/${id}`)
+                axios.delete(`https://noboni-internet-service.herokuapp.com/deleted/${id}`)
                     .then(res => {
                         toast.dismiss(loading);
                         if (res.data) {

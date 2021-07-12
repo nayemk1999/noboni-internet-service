@@ -6,6 +6,7 @@ import Book from '../Dashboard/Dashboard/Book/Book';
 import SideBar from '../Dashboard/Dashboard/SideBar/SideBar';
 import './Dashboard.css';
 import NavBar from '../Dashboard/Dashboard/NavBar/NavBar';
+import BookList from '../Dashboard/Dashboard/BookList/BookList';
 
 
 const Dashboard = ({adminLoading}) => {
@@ -21,7 +22,7 @@ const Dashboard = ({adminLoading}) => {
                 {
                     panel === "profile" ?  <Profile />
                     :panel === 'book' ? <Book />
-                    // :panel === "book-list" ? <BookList />
+                    :panel === "book-list" ? <BookList />
                     // :panel === "reviews" ? <Review />
                     // :panel === "add-services" && isAdmin ?  <AddServices />
                     // :panel === "add-admins" && isAdmin  ? <AddAdmin />

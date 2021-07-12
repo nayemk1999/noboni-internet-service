@@ -34,9 +34,6 @@ const App = () => {
           <Route path='/home'>
             <Home></Home>
           </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
           <PrivateRoute path='/dashboard/:panel'>
             <Dashboard />
           </PrivateRoute>
