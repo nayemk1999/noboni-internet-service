@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import swal from 'sweetalert';
-import { UserContext } from '../../../App';
+import { UserContext } from '../../../../App';
 import TableSpinner from '../TableSpinner/TableSpinner';
 
 const AllReview = () => {
@@ -15,7 +15,7 @@ const AllReview = () => {
 
 
     useEffect(() => {
-        axios.get('https://moto-repair.herokuapp.com/all-review')
+        axios.get('https://noboni-internet-service.herokuapp.com/review')
             .then(res => {
                 setReviews(res.data);
             })

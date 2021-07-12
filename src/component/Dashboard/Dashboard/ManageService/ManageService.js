@@ -13,7 +13,7 @@ const ManageService = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        axios.get('https://moto-repair.herokuapp.com/all-services')
+        axios.get('https://noboni-internet-service.herokuapp.com/packages')
             .then(res => {
                 setServices(res.data);
             })

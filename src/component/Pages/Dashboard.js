@@ -12,6 +12,7 @@ import AddServices from '../Dashboard/Dashboard/AddService/AddServices';
 import AddAdmin from '../Dashboard/Dashboard/AddAdmin/AddAdmin';
 import OrderList from '../Dashboard/Dashboard/OrderList/OrderList';
 import ManageService from '../Dashboard/Dashboard/ManageService/ManageService';
+import AllReview from '../Dashboard/Dashboard/AllReview/AllReview';
 
 
 const Dashboard = ({adminLoading}) => {
@@ -33,7 +34,7 @@ const Dashboard = ({adminLoading}) => {
                     :panel === "add-admins" && isAdmin  ? <AddAdmin />
                     :panel === "all-orders" && isAdmin  ? <OrderList />
                     :panel === "manage-services" && isAdmin  ? <ManageService />
-                    // :panel === "all-reviews" && isAdmin  ? <AllReview />
+                    :panel === "all-reviews" && isAdmin  ? <AllReview />
                     : null
                 }
             </div>
