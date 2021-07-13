@@ -47,18 +47,13 @@ console.log(isAdmin);
           <PrivateRoute path='/dashboard/:panel'>
             <Dashboard />
           </PrivateRoute>
-          {/* <PrivateRoute path='/user/book/:id'>
-            <UserPanel></UserPanel>
-          </PrivateRoute> */}
+
           <Route path='/login'>
             <LoginForm />
           </Route>
           <Route path='/register-form'>
             <RegisterForm />
           </Route>
-          {/* <Route path='/admin/addServicePlan'>
-          <AddServicePlan/>
-        </Route> */}
         </Switch>
       </Router>
     </UserContext.Provider>

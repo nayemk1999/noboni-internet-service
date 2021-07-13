@@ -35,7 +35,7 @@ const ManageService = () => {
     }
 
     const handleUpdateService = id => {
-        if (restrictPermission(id)) {
+        if (id) {
             return swal("Permission restriction!", "As a test-admin, you don't have permission to update 6 core services. But you can update your added services.", "info");
         }else{
             return swal("Permission restriction!", "This Feature is not implement yet. wait some days.....", "info");
@@ -58,7 +58,7 @@ const ManageService = () => {
             if (wantDelete) {
                 const loading = toast.loading('Deleting...Please wait!');
                 const removedServices = services.filter(item => item._id !== id);
-                axios.delete(`https://moto-repair.herokuapp.com/service-delete/${id}`)
+                axios.delete(`https://noboni-internet-service.herokuapp.com/deleted/${id}`)
                     .then(res => {
                         toast.dismiss(loading);
                         if (res.data) {

@@ -29,7 +29,7 @@ const OrderList = () => {
         const modifiedStatus = { id, status }
         const loading = toast.loading('Updating....Please wait!')
 
-        axios.patch('https://moto-repair.herokuapp.com/update-order-status', modifiedStatus)
+        axios.patch('https://noboni-internet-service.herokuapp.com/update-order-status', modifiedStatus)
             .then(res => {
                 toast.dismiss(loading);
                 if(res.data){
