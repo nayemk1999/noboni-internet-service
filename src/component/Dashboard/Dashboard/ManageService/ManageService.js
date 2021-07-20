@@ -44,16 +44,15 @@ const ManageService = () => {
     }
 
     const handleDeleteService = id => {
-        if (restrictPermission(id)) {
-            return swal("Permission restriction!", "As a test-admin, you don't have permission to delete 6 core services. But you can delete your added services.", "info");
-        }
-
+        // if (id) {
+        //     return swal("Permission restriction!", "As a test-admin, you don't have permission to delete 6 core services. But you can delete your added services.", "info");
+        // }
         swal({
             title: "Are you sure?",
             text: "Are you sure you want to delete this service?",
             icon: "warning",
             buttons: [true, "Yes"],
-            dangerMode: true,
+            dangerMode: true
         }).then(wantDelete => {
             if (wantDelete) {
                 const loading = toast.loading('Deleting...Please wait!');
@@ -101,7 +100,7 @@ const ManageService = () => {
                                                 <Button variant="outline-success" className="p-1 mb-0" onClick={()=>handleUpdateService(service._id)}>
                                                     <FontAwesomeIcon icon={faEdit} className="mx-1" />
                                                 </Button>
-                                                <Button variant="outline-danger" className="p-1 ml-3 mb-0"onClick={() => handleDeleteService(service._id)}>
+                                                <Button variant="outline-danger" className="p-1 ml-3 mb-0" onClick={() => handleDeleteService(service._id)}>
                                                     <FontAwesomeIcon icon={faTrash} className="mx-1" />
                                                 </Button>
                                             </td>
