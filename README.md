@@ -1,6 +1,6 @@
 # Create Internet Service Website by React & Node.js
 
-** Admin Test Login User: admin@eamil.com Password: admin12
+** Admin Test Login User: admin@email.com Password: admin12
 
 # NOBONI INTERNET SERVICE
 # ➢ Feature: Admin & User Panel, Add Service & Remove Service, User Review, Google
